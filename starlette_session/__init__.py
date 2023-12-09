@@ -61,7 +61,7 @@ class SessionMiddleware:
             if custom_session_backend
             else self._get_predefined_session_backend(backend_client)
         )
-        self.signer = itsdangerous.TimestampSigner(str(secret_key))
+        self.signer = itsdangerous.TimestampSigner(secret_key)
         self.cookie_name = cookie_name
         self.max_age = max_age
         self.domain = domain

@@ -1,5 +1,6 @@
 """Insert the new version changes in the changelog."""
 
+
 import re
 import sys
 
@@ -25,8 +26,7 @@ if __name__ == "__main__":
     version_re = re.compile(version_regex)
     last_released = None
     for line in old_lines:
-        match = version_re.search(line)
-        if match:
+        if match := version_re.search(line):
             last_released = match.groupdict()["version"]
             break
     # only keep more recent versions
