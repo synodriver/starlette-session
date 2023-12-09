@@ -35,9 +35,7 @@ _loads = partial(loads)
 
 class MemcacheJSONSerde(object):
     def serialize(self, key, value):
-        if isinstance(value, str):
-            return value, 1
-        return json.dumps(value), 2
+        return (value, 1) if isinstance(value, str) else (json.dumps(value), 2)
 
     def deserialize(self, key, value, flags):
         if flags == 1:
